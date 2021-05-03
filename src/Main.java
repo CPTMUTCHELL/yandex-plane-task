@@ -3,6 +3,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         File input = new File("input.txt");
         File output = new File("output.txt");
+        FileWriter writer = new FileWriter(output);
         BufferedReader br = new BufferedReader(new FileReader(input));
         String line;
         Plane plane = null;
@@ -20,15 +21,14 @@ public class Main {
                 plane.initPlaneRows(rowNumber,line);
                 rowNumber++;
                 c++;
-                if (rowNumber==size){
-                    br.readLine();
-                }
+                if (rowNumber==size) br.readLine();
+            }
+            else{
+                writer.write(plane.takeSeats(line));
 
             }
-            else {
-               plane.takeSeats(line);
-            }
          }
+        writer.close();
 
     }
 
